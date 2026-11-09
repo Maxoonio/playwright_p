@@ -1,0 +1,107 @@
+import os
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+BASE_URL = "http://192.168.91.61"
+LOGIN_URL = f"{BASE_URL}/login"
+PRODUCT_SLUG = "sandbox"
+PRODUCT_NAME = "PT Sandbox"
+BASIC_CASE_ID = "c-1"
+CTF_CASE_ID = "c-10"
+SCENARIO_LABEL = "PT Sandbox test-drive c-1"
+SANDBOX_C1_SCENARIO_URL = (
+    f"{BASE_URL}/scenarios"
+    "?product=sandbox&scenario=c-1&basicStepId=1&scenarioType=basic"
+)
+SCENARIO_URL = SANDBOX_C1_SCENARIO_URL
+PRODUCT_HOST = "192.168.91.14"
+PRODUCT_INTERVAL_KIND = "sandbox"
+PRODUCT_LOGIN = os.getenv(
+    "PT_TEST_DRIVE_SANDBOX_PRODUCT_LOGIN",
+    os.getenv("PT_TEST_DRIVE_PRODUCT_LOGIN", "matrixadm"),
+).strip()
+PRODUCT_PASSWORD = os.getenv(
+    "PT_TEST_DRIVE_SANDBOX_PRODUCT_PASSWORD",
+    os.getenv("PT_TEST_DRIVE_PRODUCT_PASSWORD", "P@ssw0rd"),
+)
+SCENARIO_PAGE_MODULE = "pages.sandbox_scenario_page"
+SCENARIO_PAGE_CLASS = "SandboxTestDriveScenarioPage"
+PRODUCT_ABOUT_STEP_ID = 3
+PRODUCT_ABOUT_TITLE = "О PT Sandbox"
+NEXT_AFTER_PRODUCT_ABOUT_STEP_ID = 5
+NEXT_AFTER_PRODUCT_ABOUT_TITLE = "Главное меню"
+CTF_SECTION_ID = 5
+CTF_SECTION_TITLE = "Поиск флага. Анализ вредоносных объектов"
+COMPLEX_SECTION_ID = 6
+COMPLEX_STEP_ID = 161
+
+# Каждый pytest-процесс обязан получить Sandbox JSON заново. Постоянный
+# content-cache для этого продукта полностью выключен; временный Git-каталог
+# создается системным tempfile и удаляется сразу после чтения.
+CONTENT_CACHE_ENABLED = False
+CONTENT_GITLAB_BASE_URL = os.getenv(
+    "PT_TRAINER_CONTENT_GITLAB_URL",
+    "https://gitlab.ptsecurity.com",
+).rstrip("/")
+CONTENT_GITLAB_PROJECT = os.getenv(
+    "PT_TRAINER_CONTENT_PROJECT",
+    "sbd/pt-trainer-content",
+).strip()
+CONTENT_GITLAB_REF = (
+    os.getenv("PT_TRAINER_CONTENT_REF", "testdrive").strip() or "testdrive"
+)
+CTF_CONTENT_GITLAB_REF = (
+    os.getenv("PT_TRAINER_CTF_CONTENT_REF", "testdrive").strip() or "testdrive"
+)
+CONTENT_GITLAB_TOKEN_ENV = "PT_TRAINER_CONTENT_TOKEN"
+CONTENT_GITLAB_REQUEST_TIMEOUT_SECONDS = 20
+CONTENT_GIT_CLONE_TIMEOUT_SECONDS = 120
+CONTENT_GIT_REPOSITORY_URL = os.getenv(
+    "PT_TRAINER_CONTENT_GIT_URL",
+    f"{CONTENT_GITLAB_BASE_URL}/{CONTENT_GITLAB_PROJECT}.git",
+).strip()
+CONTENT_FORCE_REFRESH = True
+
+DEFAULT_TIMEOUT_MS = 20_000
+NETWORK_TIMEOUT_MS = 15_000
+DOM_TIMEOUT_MS = 15_000
+APP_START_TIMEOUT_MS = 120_000
+PRODUCT_LOAD_TIMEOUT_MS = 90_000
+CTF_TRANSITION_TIMEOUT_MS = 10_000
+CTF_ANSWER_STATE_TIMEOUT_MS = 10_000
+CTF_MATERIAL_TIMEOUT_MS = 10_000
+CTF_METRICS_TIMEOUT_MS = 10_000
+COMPLEX_SCENARIO_COMPLETION_DWELL_MS = 5_000
+THEORY_MODULE_COMPLETION_DWELL_MS = 5_000
+BASIC_QUESTION_STATUS_TIMEOUT_MS = 45_000
+BASIC_CORRECT_ANSWER_MAX_ATTEMPTS = 3
+BASIC_CORRECT_ANSWER_RETRY_TIMEOUT_MS = 5_000
+LOGIN_FORM_HIDE_TIMEOUT_MS = 60_000
+LOGIN_MAX_ATTEMPTS = 3
+
+SOS_DESCRIPTION = "Тестовое сообщение Playwright"
+PRO_COMPANY_NAME = "test"
+PRO_COMPANY_TIN = "2222222222"
+PRO_REQUEST_MAX_ATTEMPTS = 2
+FINAL_FEEDBACK_TEXT = "Автоматизированный тестовый отзыв Playwright"
+FINAL_FEEDBACK_MAX_ATTEMPTS = 2
+FINISH_PROGRESS_THRESHOLD = 5
+SPECIALIZED_CTF_ENTRY_PROGRESS_PERCENT = 70
+QUESTION_METRICS_STATE_FILE = (
+    PROJECT_ROOT / "artifacts" / ".question-metrics-state.json"
+)
+ALLURE_RESULTS_DIR = PROJECT_ROOT / "allure-results"
+ALLURE_RESULTS_CLEANUP_INTERVAL = 3
+ALLURE_CLEANUP_STATE_FILE = PROJECT_ROOT / "artifacts" / ".allure-run-count"
+SCREENSHOTS_CLEANUP_INTERVAL = ALLURE_RESULTS_CLEANUP_INTERVAL
+SCREENSHOTS_CLEANUP_STATE_FILE = PROJECT_ROOT / "artifacts" / ".screenshots-run-count"
+
+VIEWPORT_WIDTH = 1920
+VIEWPORT_HEIGHT = 1080
+HEADLESS = False
+SLOW_MO_MS = 0
+LOCALE = "ru-RU"
+MAX_PARALLEL_BROWSERS = 3
+
+FAILURE_SCREENSHOTS_DIR = PROJECT_ROOT / "artifacts" / "screenshots"

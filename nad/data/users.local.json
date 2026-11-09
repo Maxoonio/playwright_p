@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": "perfect_user",
+      "username": "playwright_user_1",
+      "password": "P@ssw0rd",
+      "enabled": true,
+      "test_profile": "perfect"
+    },
+    {
+      "id": "answers_hints_user",
+      "username": "playwright_user_2",
+      "password": "P@ssw0rd",
+      "enabled": false,
+      "test_profile": "answers_and_hints"
+    },
+    {
+      "id": "solutions_user",
+      "username": "playwright_user_3",
+      "password": "P@ssw0rd",
+      "enabled": false,
+      "test_profile": "solutions"
+    },
+    {
+      "id": "stage_statuses_user",
+      "username": "playwright_user_4",
+      "password": "P@ssw0rd",
+      "enabled": false,
+      "test_profile": "stage_statuses"
+    },
+    {
+      "id": "question_metrics_user",
+      "username": "playwright_user_5",
+      "password": "P@ssw0rd",
+      "enabled": false,
+      "test_profile": "question_metrics"
+    }
+  ]
+}
